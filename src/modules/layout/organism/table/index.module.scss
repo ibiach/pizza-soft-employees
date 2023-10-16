@@ -1,0 +1,10 @@
+.toolbar_header {
+  @media (min-width: 600px) {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+}
+
+.footer_pagination > div {
+  align-items: baseline;
+}
