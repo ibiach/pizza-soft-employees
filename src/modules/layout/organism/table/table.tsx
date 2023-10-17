@@ -4,9 +4,7 @@ import { TableBody, TableHead } from '@modules/layout/moleculas/table';
 import { TablePaginationActions } from './table-pagination-actions';
 
 import type { TypeHeadCells } from '@/modules/employees/organism/employees-tabs/employees-tab';
-import type { TypeOrder } from '../../heplers/table-sort';
-
-import styles from './index.module.scss';
+import { SortDirectionEnum } from '@/helpers';
 
 type TableProps = {
   headCells: readonly TypeHeadCells[];
@@ -14,7 +12,7 @@ type TableProps = {
   page: number;
   amountPage: number;
   rowsPerPage: number;
-  order: TypeOrder;
+  order: SortDirectionEnum;
   orderBy: string;
   children: React.ReactNode;
   setPage: (page: number) => void;
@@ -42,7 +40,6 @@ const Table = (props: TableProps) => {
       <TableFooter>
         <TableRow>
           <TablePagination
-            className={styles.footer_pagination}
             onPageChange={onChangePage}
             onRowsPerPageChange={onChangeRowsPerPage}
             ActionsComponent={TablePaginationActions}

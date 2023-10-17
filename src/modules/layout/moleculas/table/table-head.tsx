@@ -2,7 +2,7 @@ import { Box, TableHead as MuiTableHead, TableCell, TableRow, TableSortLabel } f
 import { visuallyHidden } from '@mui/utils';
 
 import type { TypeHeadCells } from '@/modules/employees/organism/employees-tabs/employees-tab';
-import type { TypeOrder } from '../../heplers/table-sort';
+import type { TypeOrder } from '../../../../helpers/table-sort';
 
 type TableHeadProps = {
   headCells: readonly TypeHeadCells[];

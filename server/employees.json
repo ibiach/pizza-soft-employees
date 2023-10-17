@@ -135,30 +135,6 @@
       "role": "Официант",
       "phone": "+7 (823) 440-3602",
       "birthday": "26.01.1986"
-    },
-    {
-      "name": "Гелажев Кирилл",
-      "role": "Фронт",
-      "phone": "+7 (950) 005-15-93",
-      "birthday": "10/07/1997",
-      "isArchive": true,
-      "id": ":rn:"
-    },
-    {
-      "name": "OPA",
-      "role": "OPA",
-      "phone": "+7 (950) 005-15-93",
-      "birthday": "10.91.2311",
-      "isArchive": false,
-      "id": ":r1b:"
-    },
-    {
-      "name": "Double cup",
-      "role": "Повар",
-      "phone": "+7 (999) 999-99-99",
-      "birthday": "99.99.9999",
-      "isArchive": true,
-      "id": ":r2h:"
     }
   ]
 }

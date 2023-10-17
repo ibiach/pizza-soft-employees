@@ -49,7 +49,7 @@ const EmployeeEditForm = (props: EmployeeEditFormProps) => {
               name="name"
               control={control}
               defaultValue={employee.name}
-              render={({ field }) => <TextField {...field} label="ФИО" fullWidth />}
+              render={({ field }) => <TextField {...field} label="ФИО" placeholder="Иван Иванов" fullWidth />}
             />
             <Controller
               name="role"

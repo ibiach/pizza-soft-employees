@@ -45,7 +45,7 @@ const FilterDrawer = (props: FilterDrawerProps) => {
 
   return (
     <Drawer anchor="right" open={open} onClose={handleClose}>
-      <Box component={'form'} onSubmit={handleSubmit(onSubmit)}>
+      <Box component={'form'} sx={{ width: 350 }} onSubmit={handleSubmit(onSubmit)}>
         <List>
           <ListItem>
             <ListItemText primary="Фильтрация сотрудников" />
@@ -59,7 +59,6 @@ const FilterDrawer = (props: FilterDrawerProps) => {
               render={({ field }) => (
                 <Autocomplete
                   {...field}
-                  isOptionEqualToValue={(option, value) => option === value}
                   getOptionLabel={(option) => option}
                   fullWidth
                   disablePortal
@@ -75,8 +74,16 @@ const FilterDrawer = (props: FilterDrawerProps) => {
             <Controller
               name="isArchive"
               control={control}
-              defaultValue={false}
-              render={({ field }) => <FormControlLabel control={<Checkbox {...field} />} label="Архив" />}
+              defaultValue={undefined}
+              render={({ field }) => (
+                <FormControlLabel
+                  control={<Checkbox {...field} />}
+                  label={`Aрхив ${
+                    field.value === undefined ? '(без фильтрации архива)' : field.value ? '(да)' : '(нет)'
+                  } `}
+                  onChange={(event, value) => field.onChange(value)}
+                />
+              )}
             />
           </ListItem>
 

@@ -60,7 +60,7 @@ const headCells: readonly TypeHeadCells[] = [
 
 const EmployeesTab = (): React.ReactElement => {
   const dispatch = useAppDispatch();
-  const { employees, status, error } = useAppSelector(employeesSelector);
+  const { employees, filtredEmployees, status, error } = useAppSelector(employeesSelector);
 
   const navigate = useNavigate();
 
@@ -73,11 +73,17 @@ const EmployeesTab = (): React.ReactElement => {
     dispatch(fetchEmployees());
   }, [dispatch]);
 
-  const employeesLength = employees.length;
+  const preparedEmployeesData = filtredEmployees.length === 0 ? employees : filtredEmployees;
+
+  const employeesLength = preparedEmployeesData.length;
 
   const amountPage = page > 0 ? Math.max(0, (1 + page) * rowsPerPage - employees.length) : 0;
 
-  const { order, orderBy, result, onRequestSort } = useSortTableColumn<TypeEmployee>(employees, page, rowsPerPage);
+  const { order, orderBy, result, onRequestSort } = useSortTableColumn<TypeEmployee>(
+    preparedEmployeesData,
+    page,
+    rowsPerPage
+  );
 
   if (error) {
     // Shoud make an error page
@@ -111,6 +117,8 @@ const EmployeesTab = (): React.ReactElement => {
 
   const onCloseDrawerFilterEmployee = () => {
     setOpenDrawerFilter(false);
+
+    setPage(0);
   };
 
   const editEmployee = (id: number | string) => navigate(`/employee/${id}`);

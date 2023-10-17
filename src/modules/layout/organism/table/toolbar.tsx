@@ -12,6 +12,7 @@ type EnhancedToolbarProps = {
 
 const Toolbar = (props: EnhancedToolbarProps) => {
   const { title, onAdd, onFilter } = props;
+
   return (
     <MuiToolbar className={styles.toolbar_header}>
       <Typography sx={{ flex: '1 1 100%' }} variant="h6" id="tableTitle" component="div">

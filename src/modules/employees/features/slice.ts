@@ -1,6 +1,7 @@
 import { PayloadAction, createAsyncThunk, createSlice, isRejectedWithValue } from '@reduxjs/toolkit';
 import { employeesService } from '@modules/employees/services';
 import { STATUSES } from '@/lib/services/http.service';
+import { normalizeString } from '@/helpers';
 
 export type TypeEmployee = {
   id: string;
@@ -13,11 +14,12 @@ export type TypeEmployee = {
 
 type TypeInitialState = {
   employees: TypeEmployee[];
+  filtredEmployees: TypeEmployee[];
   status: STATUSES;
   error: string;
 };
 
-const initialState: TypeInitialState = { employees: [], status: STATUSES.IDLE, error: '' };
+const initialState: TypeInitialState = { employees: [], filtredEmployees: [], status: STATUSES.IDLE, error: '' };
 
 export const fetchEmployees = createAsyncThunk('employee/fetch', async (payload?: object) => {
   try {
@@ -73,12 +75,13 @@ export const employeesSlice = createSlice({
   initialState,
   reducers: {
     filterEmployees(state, action: PayloadAction<Pick<TypeEmployee, 'role' | 'isArchive'>>) {
-      state.employees = state.employees.filter((employee) => {
-        const originalRole = employee.role.toLowerCase().trim();
-        const compareRole = action.payload.role.toLocaleLowerCase().trim();
+      state.filtredEmployees = state.employees.filter((employee) => {
+        const originalRole = normalizeString(employee.role, 'simple');
+        const compareRole = normalizeString(action.payload.role, 'simple');
 
         const isRoleMatch = originalRole.includes(compareRole);
-        const isArchiveMatch = employee.isArchive === action.payload.isArchive;
+        const isArchiveMatch =
+          action.payload.isArchive === undefined ? true : action.payload.isArchive === employee.isArchive;
 
         return isRoleMatch && compareRole.length > 0 && isArchiveMatch;
       });

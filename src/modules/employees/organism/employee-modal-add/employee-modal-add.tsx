@@ -64,7 +64,14 @@ const EmployeeModalAdd = (props: EmployeeModalAddProps) => {
             defaultValue=""
             render={({ field }) => {
               return (
-                <TextField label="ФИО" fullWidth {...field} error={!!errors.name} helperText={errors.name?.message} />
+                <TextField
+                  label="ФИО"
+                  placeholder="Иван Иванов"
+                  fullWidth
+                  {...field}
+                  error={!!errors.name}
+                  helperText={errors.name?.message}
+                />
               );
             }}
             rules={{ required: requireFieldText }}
