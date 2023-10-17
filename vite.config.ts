@@ -8,6 +8,10 @@ export default ({ mode }) => {
   process.env = { ...process.env, ...loadEnv(mode, process.cwd()) };
 
   return defineConfig({
+    build: {
+      outDir: './public/dist',
+      minify: true,
+    },
     plugins: [react(), ViteAliases(aliasOptions)],
     server: {
       port: 3000,
