@@ -21,7 +21,7 @@ type TypeInitialState = {
 
 const initialState: TypeInitialState = { employees: [], filtredEmployees: [], status: STATUSES.IDLE, error: '' };
 
-export const fetchEmployees = createAsyncThunk('employee/fetch', async (payload?: object | undefined) => {
+export const fetchEmployees = createAsyncThunk('employee/fetch', async (payload?: object) => {
   try {
     const response = await employeesService.getEmployees(payload);
 
