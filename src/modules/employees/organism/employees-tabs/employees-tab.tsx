@@ -9,7 +9,7 @@ import { useSortTableColumn } from '@modules/layout/hooks';
 import { employeesSelector, fetchEmployees } from '@modules/employees/features';
 import { FilterDrawer } from '@modules/employees/moleculas/employee-filter-drawer';
 import { EmployeeModalAdd } from '@modules/employees/organism';
-import { EMPLOYEE_EDIT } from '@config/constants/routes';
+import { EMPLOYEE_EDIT, ERROR_PAGE } from '@config/constants/routes';
 import { CircularProgress } from '@mui/material';
 
 import type { TypeEmployee } from '@modules/employees/features';
@@ -87,19 +87,15 @@ const EmployeesTab = (): React.ReactElement => {
     rowsPerPage
   );
 
-  if (error) {
-    // Should to make an error page
-    return <div>{error}</div>;
+  if (status === STATUSES.ERROR) {
+    navigate(ERROR_PAGE, { state: error });
   }
 
   if (status === STATUSES.LOADING) {
-    // Should to make an loading spinner
     return (
       <div className={styles.root}>
         <div className={styles.container}>
-          <div className={styles.table}>
-            <CircularProgress />
-          </div>
+          <CircularProgress />
         </div>
       </div>
     );
