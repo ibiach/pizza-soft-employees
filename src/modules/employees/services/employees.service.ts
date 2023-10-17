@@ -1,6 +1,6 @@
-import { TypeEmployee } from '@/modules/employees/features';
-import { HttpService } from '@/lib/services';
-import { API_URL } from '@/config/environment';
+import { TypeEmployee } from '@modules/employees/features';
+import { HttpService } from '@lib/services';
+import { API_URL } from '@config/environment';
 
 const employees = {
   getEmployees: '/employees',

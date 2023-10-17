@@ -1,4 +1,5 @@
 import { Box, Modal as MuiModal, Typography } from '@mui/material';
+
 import type { DialogProps } from '@mui/material';
 
 import styles from './index.module.scss';

@@ -1,10 +1,10 @@
 import React from 'react';
+import { TablePaginationActions } from './table-pagination-actions';
 import { Table as MuiTable, TableFooter, TablePagination, TableRow } from '@mui/material';
 import { TableBody, TableHead } from '@modules/layout/moleculas/table';
-import { TablePaginationActions } from './table-pagination-actions';
+import { SortDirectionEnum } from '@helpers/sort';
 
-import type { TypeHeadCells } from '@/modules/employees/organism/employees-tabs/employees-tab';
-import { SortDirectionEnum } from '@/helpers';
+import type { TypeHeadCells } from '@modules/employees/organism/employees-tabs/employees-tab';
 
 type TableProps = {
   headCells: readonly TypeHeadCells[];

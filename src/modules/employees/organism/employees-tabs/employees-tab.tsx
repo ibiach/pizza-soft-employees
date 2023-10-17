@@ -1,16 +1,18 @@
 import React from 'react';
-import { Table } from '@/modules/layout/organism/table';
-import { Paper, TableCell, TableContainer, TableRow } from '@mui/material';
-import { employeesSelector, fetchEmployees } from '@/modules/employees/features';
-import { useAppDispatch, useAppSelector } from '@/lib/store/hooks';
-import { Toolbar } from '@/modules/layout/organism/table/toolbar';
-import { useSortTableColumn } from '@/modules/layout/hooks';
-import { STATUSES } from '@/lib/services/http.service';
-import { FilterDrawer } from '@/modules/employees/moleculas/employee-filter-drawer';
 import { useNavigate } from 'react-router-dom';
-import { EmployeeModalAdd } from '../employee-modal-add';
+import { Paper, TableCell, TableContainer, TableRow } from '@mui/material';
+import { useAppDispatch, useAppSelector } from '@lib/store/hooks';
+import { STATUSES } from '@lib/services/http.service';
+import { Table } from '@modules/layout/organism/table';
+import { Toolbar } from '@modules/layout/organism/table/toolbar';
+import { useSortTableColumn } from '@modules/layout/hooks';
+import { employeesSelector, fetchEmployees } from '@modules/employees/features';
+import { FilterDrawer } from '@modules/employees/moleculas/employee-filter-drawer';
+import { EmployeeModalAdd } from '@modules/employees/organism';
+import { EMPLOYEE_EDIT } from '@config/constants/routes';
+import { CircularProgress } from '@mui/material';
 
-import type { TypeEmployee } from '@/modules/employees/features';
+import type { TypeEmployee } from '@modules/employees/features';
 
 import styles from './index.module.scss';
 
@@ -86,17 +88,17 @@ const EmployeesTab = (): React.ReactElement => {
   );
 
   if (error) {
-    // Shoud make an error page
+    // Should to make an error page
     return <div>{error}</div>;
   }
 
   if (status === STATUSES.LOADING) {
-    // Shoud make an loading spinner
+    // Should to make an loading spinner
     return (
       <div className={styles.root}>
         <div className={styles.container}>
           <div className={styles.table}>
-            <h1>loading...</h1>
+            <CircularProgress />
           </div>
         </div>
       </div>
@@ -121,7 +123,7 @@ const EmployeesTab = (): React.ReactElement => {
     setPage(0);
   };
 
-  const editEmployee = (id: number | string) => navigate(`/employee/${id}`);
+  const editEmployee = (id: number | string) => navigate(`${EMPLOYEE_EDIT}/${id}`);
 
   return (
     <div className={styles.root}>

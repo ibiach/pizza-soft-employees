@@ -3,10 +3,8 @@
     "target": "ES2020",
     "baseUrl": "./src",
     "paths": {
-      "@/*": ["*"],
       "@lib/*": ["lib/*"],
       "@pages/*": ["pages/*"],
-      "@store/*": ["store/*"],
       "@config/*": ["config/*"],
       "@helpers/*": ["helpers/*"],
       "@modules/*": ["modules/*"]

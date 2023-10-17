@@ -1,4 +1,4 @@
-import { EmployeesTab } from '@/modules/employees/organism';
+import { EmployeesTab } from '@modules/employees/organism';
 
 import styles from './index.module.scss';
 

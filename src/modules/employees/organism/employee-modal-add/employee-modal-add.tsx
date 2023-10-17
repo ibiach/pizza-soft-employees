@@ -1,12 +1,13 @@
 import React from 'react';
 import { Autocomplete, Box, Button, Checkbox, FormControlLabel, FormGroup, TextField } from '@mui/material';
 import { Controller, SubmitHandler, useForm } from 'react-hook-form';
-import { Modal } from '@/modules/layout/organism/modal/modal';
+import { Modal } from '@modules/layout/organism/modal/modal';
+
+import { MaskHelper } from '@helpers/mask';
+import { useAppDispatch } from '@lib/store/hooks';
 
 import styles from './index.module.scss';
-import { MaskHelper } from '@/helpers/mask';
-import { useAppDispatch } from '@/lib/store/hooks';
-import { addEmployee } from '../../features/slice';
+import { addEmployee } from '@modules/employees/features/slice';
 
 type EmployeeModalAddProps = {
   open: boolean;

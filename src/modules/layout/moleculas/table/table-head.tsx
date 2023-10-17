@@ -1,12 +1,12 @@
 import { Box, TableHead as MuiTableHead, TableCell, TableRow, TableSortLabel } from '@mui/material';
+import { SortDirectionEnum } from '@helpers/sort';
 import { visuallyHidden } from '@mui/utils';
 
-import type { TypeHeadCells } from '@/modules/employees/organism/employees-tabs/employees-tab';
-import type { TypeOrder } from '../../../../helpers/table-sort';
+import type { TypeHeadCells } from '@modules/employees/organism/employees-tabs/employees-tab';
 
 type TableHeadProps = {
   headCells: readonly TypeHeadCells[];
-  order: TypeOrder;
+  order: SortDirectionEnum;
   orderBy: string;
   onRequestSort: (event: React.MouseEvent<unknown>, property: string) => void;
 };

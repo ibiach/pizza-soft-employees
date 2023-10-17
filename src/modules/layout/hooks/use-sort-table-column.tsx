@@ -1,5 +1,5 @@
 import React from 'react';
-import { SortDirectionEnum, SortHelper } from '@/helpers';
+import { SortDirectionEnum, SortHelper } from '@helpers/sort';
 
 const useSortTableColumn = <T,>(data: T[], page: number, rowsPerPage: number) => {
   const [order, setOrder] = React.useState<SortDirectionEnum>(SortDirectionEnum.asc);

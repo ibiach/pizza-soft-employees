@@ -1,2 +1,4 @@
 export { EmployeesTab } from './employees-tabs';
-export { EmployeeEditForm } from '../entries/employee-edit-form';
+export { EmployeeModalAdd } from './employee-modal-add';
+
+export type { TypeInputs } from './employee-modal-add';

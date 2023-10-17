@@ -1,5 +1,5 @@
+import { employeesSlice } from '@modules/employees/features';
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
-import { employeesSlice } from '../../modules/employees/features';
 
 const rootReducer = combineReducers({
   [employeesSlice.name]: employeesSlice.reducer,

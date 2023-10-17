@@ -1,9 +1,10 @@
+import { useNavigate } from 'react-router-dom';
+import { Controller, SubmitHandler, useForm } from 'react-hook-form';
+import { EMPLOYEES_TAB } from '@config/constants/routes';
+import { useAppDispatch } from '@lib/store/hooks';
+import { MaskHelper } from '@helpers/mask';
 import { Autocomplete, Box, Button, Checkbox, FormControlLabel, FormGroup, TextField, Typography } from '@mui/material';
 import { TypeEmployee, updateEmployee } from '@modules/employees/features/slice';
-import { Controller, SubmitHandler, useForm } from 'react-hook-form';
-import { MaskHelper } from '@/helpers/mask';
-import { useAppDispatch } from '@/lib/store/hooks';
-import { useNavigate } from 'react-router-dom';
 
 import type { TypeInputs } from '@modules/employees/organism/employee-modal-add/employee-modal-add';
 
@@ -33,7 +34,7 @@ const EmployeeEditForm = (props: EmployeeEditFormProps) => {
 
     reset();
 
-    navigate('/');
+    navigate(EMPLOYEES_TAB);
   };
 
   return (
@@ -129,7 +130,7 @@ const EmployeeEditForm = (props: EmployeeEditFormProps) => {
               <Button
                 fullWidth
                 sx={{ maxHeight: '50px' }}
-                onClick={() => navigate(-1)}
+                onClick={() => navigate(EMPLOYEES_TAB)}
                 variant="contained"
                 color="primary"
               >
