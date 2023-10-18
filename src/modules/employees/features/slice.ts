@@ -83,7 +83,7 @@ export const employeesSlice = createSlice({
         const isArchiveMatch =
           action.payload.isArchive === undefined ? true : action.payload.isArchive === employee.isArchive;
 
-        return isRoleMatch && compareRole.length > 0 && isArchiveMatch;
+        return isArchiveMatch && isRoleMatch;
       });
     },
   },
