@@ -1,5 +1,5 @@
-import { Box, TableHead as MuiTableHead, TableCell, TableRow, TableSortLabel } from '@mui/material';
 import { SortDirectionEnum } from '@helpers/sort';
+import { Box, TableCell, TableHead as MuiTableHead, TableRow, TableSortLabel } from '@mui/material';
 import { visuallyHidden } from '@mui/utils';
 
 import type { TypeHeadCells } from '@modules/employees/organism/employees-tabs/employees-tab';

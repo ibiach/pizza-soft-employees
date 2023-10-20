@@ -1,8 +1,8 @@
 import { Box, Modal as MuiModal, Typography } from '@mui/material';
 
-import type { DialogProps } from '@mui/material';
-
 import styles from './index.module.scss';
+
+import type { DialogProps } from '@mui/material';
 
 type ModalProps = Omit<DialogProps, 'children' | 'onClose'> & {
   title?: string;

@@ -1,6 +1,6 @@
-import { IconButton, Toolbar as MuiToolbar, Tooltip, Typography } from '@mui/material';
-import FilterListIcon from '@mui/icons-material/FilterList';
 import AddIcon from '@mui/icons-material/Add';
+import FilterListIcon from '@mui/icons-material/FilterList';
+import { IconButton, Toolbar as MuiToolbar, Tooltip, Typography } from '@mui/material';
 
 import styles from './index.module.scss';
 

@@ -1,9 +1,11 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
+
 import { useAppDispatch } from '@lib/store/hooks';
-import { fetchEmployees } from '@modules/employees/features';
+
 import { EmployeeEditForm } from '@modules/employees/entries/employee-edit-form';
+import { fetchEmployees } from '@modules/employees/features';
 import { employeesSelectorById } from '@modules/employees/features/selectors';
 
 import styles from './index.module.scss';

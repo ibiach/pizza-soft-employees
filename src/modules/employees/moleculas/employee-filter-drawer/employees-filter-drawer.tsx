@@ -1,19 +1,21 @@
+import { Controller, SubmitHandler, useForm } from 'react-hook-form';
 import {
+  Autocomplete,
+  Box,
+  Button,
+  Checkbox,
   Drawer,
+  FormControlLabel,
   List,
   ListItem,
   ListItemText,
   TextField,
-  Button,
-  Box,
-  FormControlLabel,
-  Checkbox,
-  Autocomplete,
 } from '@mui/material';
-import { Controller, SubmitHandler, useForm } from 'react-hook-form';
-import { TypeInputs } from '@modules/employees/organism/employee-modal-add/employee-modal-add';
+
 import { useAppDispatch } from '@lib/store/hooks';
+
 import { filterEmployees } from '@modules/employees/features';
+import { TypeInputs } from '@modules/employees/organism/employee-modal-add/employee-modal-add';
 
 type FilterDrawerProps = {
   open: boolean;

@@ -3,7 +3,7 @@ module.exports = {
   env: { browser: true, es2020: true },
   parser: '@typescript-eslint/parser',
   ignorePatterns: ['dist', '.eslintrc.cjs'],
-  plugins: ['react-refresh', 'prettier'],
+  plugins: ['react-refresh', 'prettier', 'import', 'simple-import-sort'],
   extends: [
     'eslint:recommended',
     'plugin:react-hooks/recommended',
@@ -13,10 +13,31 @@ module.exports = {
   ],
   rules: {
     'prefer-const': 'off',
-    'react-refresh/only-export-components': ['warn', { allowConstantExport: true }],
     'no-unused-vars': 'off',
+    'prettier/prettier': 'warn',
     '@typescript-eslint/no-unused-vars': 'error',
     '@typescript-eslint/no-explicit-any': 'warn',
-    'prettier/prettier': 'warn',
+    'react-refresh/only-export-components': ['warn', { allowConstantExport: true }],
+    'import/order': 'off',
+    'simple-import-sort/imports': [
+      'warn',
+      {
+        groups: [
+          ['^\\u0000'],
+          // Группа: Всё, что начинается с "react"
+          ['^react', '^@?\\w'],
+          // Группа: Импорты из "@config, @lib"
+          ['^@config', '^@lib'],
+          // Группа: Импорты из "@modules"
+          ['^@modules'],
+          // Группа: Импорты из текущего каталога
+          ['^\\./'],
+          // Группа: Стили - scss, sass, css
+          ['^.+\\.(scss|sass|css)$'],
+          // Группа: Импорты помеченные как type (в конце)
+          ['^.+\\u0000$'],
+        ],
+      },
+    ],
   },
 };

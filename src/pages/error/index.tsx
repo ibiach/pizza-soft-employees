@@ -1,4 +1,5 @@
 import { useNavigate } from 'react-router-dom';
+
 import { EMPLOYEES_TAB } from '@config/constants/routes';
 
 import styles from './index.module.scss';

@@ -1,16 +1,14 @@
-eslint:
-		yarn add -D eslint
+lint:
+		bun add --dev eslint prettier eslint-config-prettier eslint-plugin-prettier eslint-plugin-jsx-a11y eslint-plugin-simple-import-sort eslint-plugin-react eslint-plugin-react-hooks eslint-plugin-react-refresh @typescript-eslint/eslint-plugin @typescript-eslint/parser
 
-prettier:
-		yarn add -D prettier
+others:
+		bun add react-router-dom react-text-mask reset-css query-string json-server
 
 styles:
-		yarn add @mui/material @mui/styled-engine styled-components
-		yarn add -D @types/styled-components
+		bun add @mui/material @emotion/react @emotion/styled
 
 axios:
-		yarn add axios
-		yarn add -D @types/axios
+		bun add axios
 
 redux:
-		yarn add react-redux @reduxjs/toolkit
+		bun add react-redux @reduxjs/toolkit

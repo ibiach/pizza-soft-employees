@@ -1,9 +1,9 @@
-import { Box } from '@mui/material';
-import IconButton from '@mui/material/IconButton';
 import FirstPageIcon from '@mui/icons-material/FirstPage';
-import LastPageIcon from '@mui/icons-material/LastPage';
 import KeyboardArrowLeft from '@mui/icons-material/KeyboardArrowLeft';
 import KeyboardArrowRight from '@mui/icons-material/KeyboardArrowRight';
+import LastPageIcon from '@mui/icons-material/LastPage';
+import { Box } from '@mui/material';
+import IconButton from '@mui/material/IconButton';
 
 type TablePaginationActionsProps = {
   count: number;

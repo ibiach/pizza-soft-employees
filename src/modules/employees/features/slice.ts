@@ -1,7 +1,9 @@
-import { PayloadAction, createAsyncThunk, createSlice, isRejectedWithValue } from '@reduxjs/toolkit';
-import { employeesService } from '@modules/employees/services';
-import { STATUSES } from '@lib/services/http.service';
 import { normalizeString } from '@helpers/string';
+import { createAsyncThunk, createSlice, isRejectedWithValue, PayloadAction } from '@reduxjs/toolkit';
+
+import { STATUSES } from '@lib/services/http.service';
+
+import { employeesService } from '@modules/employees/services';
 
 export type TypeEmployee = {
   id: string;

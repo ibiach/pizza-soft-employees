@@ -1,4 +1,5 @@
 import { createSelector } from '@reduxjs/toolkit';
+
 import { employeesSlice } from './slice';
 
 import type { RootState } from '@lib/store/store';

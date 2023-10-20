@@ -1,14 +1,16 @@
-import { useNavigate } from 'react-router-dom';
 import { Controller, SubmitHandler, useForm } from 'react-hook-form';
-import { EMPLOYEES_TAB } from '@config/constants/routes';
-import { useAppDispatch } from '@lib/store/hooks';
+import { useNavigate } from 'react-router-dom';
 import { MaskHelper } from '@helpers/mask';
 import { Autocomplete, Box, Button, Checkbox, FormControlLabel, FormGroup, TextField, Typography } from '@mui/material';
+
+import { EMPLOYEES_TAB } from '@config/constants/routes';
+import { useAppDispatch } from '@lib/store/hooks';
+
 import { TypeEmployee, updateEmployee } from '@modules/employees/features/slice';
 
-import type { TypeInputs } from '@modules/employees/organism/employee-modal-add/employee-modal-add';
-
 import styles from './index.module.scss';
+
+import type { TypeInputs } from '@modules/employees/organism/employee-modal-add/employee-modal-add';
 
 type EmployeeEditFormProps = {
   id: string;

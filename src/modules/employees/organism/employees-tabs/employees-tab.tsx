@@ -1,20 +1,20 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Paper, TableCell, TableContainer, TableRow } from '@mui/material';
-import { useAppDispatch, useAppSelector } from '@lib/store/hooks';
+import { CircularProgress, Paper, TableCell, TableContainer, TableRow } from '@mui/material';
+
+import { EMPLOYEE_EDIT, ERROR_PAGE } from '@config/constants/routes';
 import { STATUSES } from '@lib/services/http.service';
-import { Table } from '@modules/layout/organism/table';
-import { Toolbar } from '@modules/layout/organism/table/toolbar';
-import { useSortTableColumn } from '@modules/layout/hooks';
+import { useAppDispatch, useAppSelector } from '@lib/store/hooks';
+
 import { employeesSelector, fetchEmployees } from '@modules/employees/features';
 import { FilterDrawer } from '@modules/employees/moleculas/employee-filter-drawer';
 import { EmployeeModalAdd } from '@modules/employees/organism';
-import { EMPLOYEE_EDIT, ERROR_PAGE } from '@config/constants/routes';
-import { CircularProgress } from '@mui/material';
-
-import type { TypeEmployee } from '@modules/employees/features';
+import { useSortTableColumn } from '@modules/layout/hooks';
+import { Table, Toolbar } from '@modules/layout/organism/table';
 
 import styles from './index.module.scss';
+
+import type { TypeEmployee } from '@modules/employees/features';
 
 export type TypeHeadCells = {
   id: keyof TypeEmployee;

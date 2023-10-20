@@ -1,8 +1,10 @@
-import { RouterProvider, createBrowserRouter } from 'react-router-dom';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import { ErrorPage } from '@pages/error';
+
+import { EMPLOYEE_EDIT, EMPLOYEES_TAB, ERROR_PAGE } from '@config/constants/routes';
+
 import { EmployeesPage } from './pages/employees';
 import { EmployeeEditPage } from './pages/employees/edit';
-import { EMPLOYEES_TAB, EMPLOYEE_EDIT, ERROR_PAGE } from '@config/constants/routes';
-import { ErrorPage } from '@pages/error';
 
 const router = createBrowserRouter([
   { path: EMPLOYEES_TAB, index: true, element: <EmployeesPage /> },
