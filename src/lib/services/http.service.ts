@@ -13,6 +13,8 @@ enum ERRORS {
   INTERNAL_ERROR = 'Internal Error',
 }
 
+type TypeMethod = 'GET' | 'POST' | 'PATCH' | 'DELETE';
+
 export class HttpService {
   apiUrl: string;
   httpClient: AxiosInstance;
@@ -22,8 +24,8 @@ export class HttpService {
     this.httpClient = axios.create();
   }
 
-  private async execute<T>(originMethod: string, url: string, data?: T, options?: AxiosRequestConfig): Promise<T> {
-    const method = originMethod.toLowerCase();
+  private async execute<T>(originMethod: TypeMethod, url: string, data?: T, options?: AxiosRequestConfig): Promise<T> {
+    const method = originMethod.toLowerCase() as Lowercase<TypeMethod>;
 
     const executeMethod = this.httpClient[method];
 
