@@ -1,6 +1,6 @@
 .toolbar_header {
-  @media (min-width: 600px) {
-    padding-left: 16px;
+  @media (width >= 600px) {
     padding-right: 16px;
+    padding-left: 16px;
   }
 }
