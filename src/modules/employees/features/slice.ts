@@ -17,13 +17,20 @@ export type TypeEmployee = {
 type TypeInitialState = {
   employees: TypeEmployee[];
   filtredEmployees: TypeEmployee[];
+  totalCount: number;
   status: STATUSES;
   error: string;
 };
 
-const initialState: TypeInitialState = { employees: [], filtredEmployees: [], status: STATUSES.IDLE, error: '' };
+const initialState: TypeInitialState = {
+  employees: [],
+  filtredEmployees: [],
+  totalCount: 0,
+  status: STATUSES.IDLE,
+  error: '',
+};
 
-export const fetchEmployees = createAsyncThunk('employee/fetch', async (_, payload?: object) => {
+export const fetchEmployees = createAsyncThunk('employee/fetch', async (payload?: object) => {
   try {
     const response = await employeesService.getEmployees(payload);
 
@@ -94,9 +101,10 @@ export const employeesSlice = createSlice({
       .addCase(fetchEmployees.pending, (state) => {
         state.status = STATUSES.LOADING;
       })
-      .addCase(fetchEmployees.fulfilled, (state, action: PayloadAction<TypeEmployee[]>) => {
+      .addCase(fetchEmployees.fulfilled, (state, action) => {
         state.status = STATUSES.SUCCESS;
-        state.employees = action.payload;
+        state.totalCount = action.payload.totalCount;
+        state.employees = action.payload.response;
       })
       .addCase(fetchEmployees.rejected, (state, action) => {
         state.status = STATUSES.ERROR;
@@ -106,9 +114,9 @@ export const employeesSlice = createSlice({
       .addCase(addEmployee.pending, (state) => {
         state.status = STATUSES.LOADING;
       })
-      .addCase(addEmployee.fulfilled, (state, action: PayloadAction<TypeEmployee>) => {
+      .addCase(addEmployee.fulfilled, (state) => {
         state.status = STATUSES.SUCCESS;
-        state.employees.push(action.payload as TypeEmployee);
+        state.totalCount = state.totalCount + 1;
       })
       .addCase(addEmployee.rejected, (state, action) => {
         state.status = STATUSES.ERROR;

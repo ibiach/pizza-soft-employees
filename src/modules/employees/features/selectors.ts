@@ -12,6 +12,10 @@ const employeesSelectorById = (id: string) =>
   createSelector(state, (state) => {
     const [employee] = state.employees.filter((employee) => employee.id == id);
 
+    if (!employee?.id) {
+      return null;
+    }
+
     return employee;
   });
 

@@ -24,7 +24,12 @@ export class HttpService {
     this.httpClient = axios.create();
   }
 
-  private async execute<T>(originMethod: TypeMethod, url: string, data?: T, options?: AxiosRequestConfig): Promise<T> {
+  private async execute<T>(
+    originMethod: TypeMethod,
+    url: string,
+    data?: T,
+    options?: AxiosRequestConfig
+  ): Promise<{ response: T; totalCount: number }> {
     const method = originMethod.toLowerCase() as Lowercase<TypeMethod>;
 
     const executeMethod = this.httpClient[method];
@@ -34,13 +39,19 @@ export class HttpService {
     }
 
     try {
-      const response: AxiosResponse = await executeMethod(this.createRequestUrl(url), data, options);
+      const request: AxiosResponse = await executeMethod(this.createRequestUrl(url), data, options);
+      const wait = (delay: number) => new Promise((resolve) => setTimeout(resolve, delay));
 
-      if (this.checkResponse(response)) {
+      await wait(1000);
+
+      const response = request.data;
+      const totalCount = Number(request.headers['x-total-count']);
+
+      if (this.checkResponse(request)) {
         throw new Error(ERRORS.BAD_REQUEST);
       }
 
-      return response.data;
+      return { response, totalCount };
     } catch (e) {
       throw new Error(e as string);
     }

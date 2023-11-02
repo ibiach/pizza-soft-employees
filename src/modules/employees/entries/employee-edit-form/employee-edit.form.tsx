@@ -6,15 +6,16 @@ import { Autocomplete, Box, Button, Checkbox, FormControlLabel, FormGroup, TextF
 import { EMPLOYEES_TAB } from '@config/constants/routes';
 import { useAppDispatch } from '@lib/store/hooks';
 
-import { TypeEmployee, updateEmployee } from '@modules/employees/features/slice';
+import { updateEmployee } from '@modules/employees/features/slice';
 
 import styles from './index.module.scss';
 
+import type { TypeEmployee } from '@modules/employees/features/slice';
 import type { TypeInputs } from '@modules/employees/organism/employee-modal-add/employee-modal-add';
 
 type EmployeeEditFormProps = {
   id: string;
-  employee: TypeEmployee;
+  employee: TypeEmployee | null;
 };
 
 const EmployeeEditForm = (props: EmployeeEditFormProps) => {
@@ -38,6 +39,10 @@ const EmployeeEditForm = (props: EmployeeEditFormProps) => {
 
     navigate(EMPLOYEES_TAB);
   };
+
+  if (!employee) {
+    return;
+  }
 
   return (
     <Box className={styles.root}>

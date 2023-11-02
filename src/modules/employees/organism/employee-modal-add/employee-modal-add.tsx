@@ -2,6 +2,7 @@ import React from 'react';
 import { Controller, SubmitHandler, useForm } from 'react-hook-form';
 import { MaskHelper } from '@helpers/mask';
 import { Autocomplete, Box, Button, Checkbox, FormControlLabel, FormGroup, TextField } from '@mui/material';
+import { v4 as uuidv4 } from 'uuid';
 
 import { useAppDispatch } from '@lib/store/hooks';
 
@@ -31,7 +32,7 @@ const EmployeeModalAdd = (props: EmployeeModalAddProps) => {
 
   const dispatch = useAppDispatch();
 
-  const uniqueId = React.useId();
+  const uniqueId = uuidv4();
 
   const {
     control,

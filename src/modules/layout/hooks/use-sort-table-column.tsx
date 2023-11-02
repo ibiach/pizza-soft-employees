@@ -1,7 +1,7 @@
 import React from 'react';
 import { SortDirectionEnum, SortHelper } from '@helpers/sort';
 
-const useSortTableColumn = <T,>(data: T[], page: number, rowsPerPage: number) => {
+const useSortTableColumn = <T,>(data: T[]) => {
   const [order, setOrder] = React.useState<SortDirectionEnum>(SortDirectionEnum.asc);
   const [orderBy, setOrderBy] = React.useState('');
 
@@ -12,8 +12,8 @@ const useSortTableColumn = <T,>(data: T[], page: number, rowsPerPage: number) =>
   };
 
   const result = React.useMemo(() => {
-    return SortHelper.sortBy(orderBy, order, data).slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage);
-  }, [order, orderBy, page, rowsPerPage, data]);
+    return SortHelper.sortBy(orderBy, order, data);
+  }, [order, orderBy, data]);
 
   return { result, order, orderBy, onRequestSort };
 };

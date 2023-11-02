@@ -13,7 +13,7 @@ const TableBody = (props: TableBodyProps) => {
     <MuiTableBody>
       {children}
       {amountPage > 0 && (
-        <TableRow style={{ height: 53 * amountPage }}>
+        <TableRow style={{ height: 52 * amountPage }}>
           <TableCell colSpan={colSpan} />
         </TableRow>
       )}
