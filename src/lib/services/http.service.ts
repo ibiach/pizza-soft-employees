@@ -40,9 +40,6 @@ export class HttpService {
 
     try {
       const request: AxiosResponse = await executeMethod(this.createRequestUrl(url), data, options);
-      const wait = (delay: number) => new Promise((resolve) => setTimeout(resolve, delay));
-
-      await wait(1000);
 
       const response = request.data;
       const totalCount = Number(request.headers['x-total-count']);

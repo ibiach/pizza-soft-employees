@@ -1,3 +1,4 @@
+import React from 'react';
 import { Controller, SubmitHandler, useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 import { MaskHelper } from '@helpers/mask';
@@ -32,13 +33,16 @@ const EmployeeEditForm = (props: EmployeeEditFormProps) => {
     formState: { errors },
   } = useForm<TypeInputs>();
 
-  const onSubmit: SubmitHandler<TypeInputs> = (data) => {
-    dispatch(updateEmployee({ id, data }));
+  const onSubmit: SubmitHandler<TypeInputs> = React.useCallback(
+    (data) => {
+      dispatch(updateEmployee({ id, data }));
 
-    reset();
+      reset();
 
-    navigate(EMPLOYEES_TAB);
-  };
+      navigate(EMPLOYEES_TAB);
+    },
+    [id]
+  );
 
   if (!employee) {
     return;
